@@ -16,11 +16,11 @@ public class ProductDetailPage extends HomePage {
     }
 
     public String getPrice(){
-        String price= getText(highPrice);
+        String price= webDriver.findElement(lowPrice).getText();
         if(price.isEmpty()){
-            return getText(lowPrice);
+            return getText(highPrice);
         }
-        return getText(highPrice);
+        return getText(lowPrice);
     }
 
     public void addBasket() {
@@ -29,7 +29,7 @@ public class ProductDetailPage extends HomePage {
 
 
     public BasketPage goBasket() {
-        click(iconBasket, 10);
+        click(iconBasket, 5);
         return new BasketPage(webDriver);
     }
 }

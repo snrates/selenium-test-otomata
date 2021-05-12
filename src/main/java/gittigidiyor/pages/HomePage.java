@@ -8,7 +8,7 @@ public class HomePage extends PagesHelper {
 
     private final By userLoginIcon = By.cssSelector("[data-cy='header-user-menu'] .egoSnI");
     private final By loginButton = By.cssSelector("[data-cy='header-login-button']");
-    //    private final By searchBox = By.cssSelector("[data-cy='header-search-input']");
+    //private final By searchBox = By.cssSelector("[data-cy='header-search-input']");
     private final By searchBox = By.className("sc-4995aq-0");
     private final By userNameControl = By.cssSelector("[data-cy='header-user-menu'] .egoSnI > span");
     private final By searchButton = By.cssSelector(".qjixn8-0.sc-1bydi5r-0.hKfdXF");

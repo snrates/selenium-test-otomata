@@ -13,7 +13,7 @@ public class PagesHelper {
     }
 
     public String getTitle() {
-        return this.webDriver.getTitle();
+        return webDriver.getTitle();
     }
 
     public String getText(By byElement) {

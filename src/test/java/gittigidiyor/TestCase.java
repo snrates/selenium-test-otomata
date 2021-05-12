@@ -6,21 +6,23 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 
-public class TestStart extends BaseTest {
+public class TestCase extends BaseTest {
 
     @Test
-    public void goToPage() {
+    public void goToPage() throws InterruptedException {
 
         JavascriptExecutor js = (JavascriptExecutor) webDriver;
 
         String homePageTitle = "GittiGidiyor - Türkiye'nin Öncü Alışveriş Sitesi";
         String key = "Bilgisayar";
         String targetPageNumber = "2";
-        String basketCount = "Ürün Toplamı (2 Adet)";
+        String basketProductCount = "Ürün Toplamı (2 Adet)";
         String basketInfo = "Sepetinizde ürün bulunmamaktadır.";
+        String productCountInfo = "Son 1  ürün!";
 
         HomePage homePage = new HomePage(webDriver);
-        String driverTitle = homePage.getHomePageTitle();
+        String driverTitle = homePage.
+                getHomePageTitle();
         Log4j.info("Driver Title : " + driverTitle);
         Assert.assertEquals(driverTitle, homePageTitle);
 
@@ -45,11 +47,30 @@ public class TestStart extends BaseTest {
 
         ProductDetailPage productDetailPage = searchResultPage.getProduct();
         String selectProductPrice = productDetailPage.getPrice();
-        Log4j.info("Select product price: " + selectProductPrice);
+        Log4j.info("Select product price: " + selectProductPrice);//sepete eklemeden
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         productDetailPage.addBasket();
         Log4j.info("Product is add basket");
-        productDetailPage.goBasket();
-    }
 
+
+        BasketPage basketPage = productDetailPage.goBasket();
+        String basketPrice = basketPage.getCartPrice();//sepetteki fiyatı
+        Assert.assertEquals(selectProductPrice, basketPrice);
+        Log4j.info("Cart price is equal to product price");
+
+//        String productCount=basketPage.productCount();
+//        Assert.assertEquals(productCount,productCountInfo);
+//        Log4j.info("Final Product");
+
+        basketPage.increaseProduct();//artır
+        Thread.sleep(5000);
+        String totalProductInfo = basketPage.getTotalProduct();
+        Assert.assertEquals(totalProductInfo, basketInfo);
+        Log4j.info("The number of items in the basket is equal");
+        basketPage.getEmptyCart();
+        String noProduct = basketPage.getNoProductInfo();
+        Assert.assertEquals(noProduct, basketProductCount);
+        Log4j.info("Basket is empty");
+        Log4j.endLog();
+    }
 }

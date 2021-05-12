@@ -1,12 +1,10 @@
 package gittigidiyor;
 
 
-import gittigidiyor.pages.HomePage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -35,7 +33,7 @@ public class BaseTest {
         webDriver.manage().window().maximize();
         Log4j.startLog();
         webDriver.get(browserUrl);
-        Log4j.info("Open Browser Page : " + browserUrl);
+        Log4j.info("Opening Browser Page : " + browserUrl);
     }
 
     @After
