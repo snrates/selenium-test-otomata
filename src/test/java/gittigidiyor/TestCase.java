@@ -58,9 +58,9 @@ public class TestCase extends BaseTest {
         Assert.assertEquals(selectProductPrice, basketPrice);
         Log4j.info("Cart price is equal to product price");
 
-//        String productCount=basketPage.productCount();
-//        Assert.assertEquals(productCount,productCountInfo);
-//        Log4j.info("Final Product");
+        //String productCount=basketPage.productCount();
+        //Assert.assertEquals(productCount,productCountInfo);
+        //Log4j.info("Final Product");
 
         basketPage.increaseProduct();//artır
         Thread.sleep(5000);
