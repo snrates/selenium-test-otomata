@@ -3,7 +3,7 @@ package gittigidiyor.user;
 public class User {
 
     private final String email = "sonerats25@gmail.com";
-    private final String password = "soner1300";
+    private final String password = "******";
     private final String userName = "sonerates236585";
 
     public String getUserName() {
